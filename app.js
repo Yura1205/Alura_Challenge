@@ -5,7 +5,9 @@ function agregarAmigo() {
     let textoAmigo = inputAmigo.value.trim();
 
     if (textoAmigo === "") {
-        mostrarPopup();
+        if (!document.getElementById("popup").classList.contains("active")) {
+            mostrarPopup();
+        }
         return;
     }
 
@@ -15,11 +17,11 @@ function agregarAmigo() {
 }
 
 function mostrarPopup() {
-    document.getElementById("popup").style.display = "flex";
+    document.getElementById("popup").classList.add("active");
 }
 
 function cerrarPopup() {
-    document.getElementById("popup").style.display = "none";
+    document.getElementById("popup").classList.remove("active");
 }
 
 function actualizarLista() {
@@ -32,20 +34,31 @@ function actualizarLista() {
 
     amigos.forEach((amigo, index) => {
         const li = document.createElement("li");
-        li.textContent = amigo;
         li.classList.add("nombre-item");
+
+        // Contenedor para el nombre y el botón
+        const divItem = document.createElement("div");
+        divItem.classList.add("amigo-item");
+
+        const spanNombre = document.createElement("span");
+        spanNombre.textContent = amigo;
+        spanNombre.classList.add("amigo-nombre");
 
         // Botón para eliminar
         const btnEliminar = document.createElement("button");
         btnEliminar.textContent = "❌";
+        btnEliminar.classList.add("btn-eliminar");
         btnEliminar.onclick = () => eliminarAmigo(index);
 
-        li.appendChild(btnEliminar);
+        divItem.appendChild(spanNombre);
+        divItem.appendChild(btnEliminar);
+        li.appendChild(divItem);
         listaAmigos.appendChild(li);
     });
 
-    listaAmigos.style.display = amigos.length > 0 ? "block" : "none"; // Oculta la lista si está vacía
+    listaAmigos.style.display = amigos.length > 0 ? "block" : "none";
 }
+
 
 function eliminarAmigo(index) {
     amigos.splice(index, 1);

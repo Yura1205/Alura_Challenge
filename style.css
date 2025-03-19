@@ -30,6 +30,7 @@ body {
     width: 100%;
 }
 
+
 /* Banner */
 .header-banner {
     flex: 40%;
@@ -38,12 +39,15 @@ body {
     align-items: center;
     padding: 40px 0 0;
 }
-
+.photo{
+    height: 40%;
+    
+}
 /* Sección de entrada */
 .input-section {
     flex: 60%;
     background-color: var(--color-secondary);
-    border: 1px solid #000;
+    border: 0.5px solid var(--color-primary);
     border-radius: 64px 64px 0 0;
     display: flex;
     flex-direction: column;
@@ -82,7 +86,7 @@ body {
 .input-name {
     width: 100%;
     padding: 10px;
-    border: 2px solid #000;
+    border: 0.5px solid var(--color-primary);
     border-radius: 25px 0 0 25px;
     font-size: 16px;
 }
@@ -90,8 +94,8 @@ body {
 .button-container {
     width: 300px;
     justify-content: center;
-}
 
+}
 /* Estilos de entrada de texto */
 .input-title {
     flex: 1;
@@ -109,20 +113,22 @@ button {
     padding: 15px 30px;
     font-family: "Inter", sans-serif;
     font-size: 16px;
-    border: 2px solid #000;
+    border: 0.5px solid var(--color-primary);
     border-radius: 25px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     cursor: pointer;
 }
 
 .button-add {
-    background-color: var(--color-tertiary);
-    color: var(--color-text);
+    background-color: var(--color-primary);
+    color: white;
     border-radius: 0 25px 25px 0;
 }
 
 .button-add:hover {
-    background-color: #a1a1a1;
+    background-color: #5bcbf7;
+    border: 0.5px solid #5bcbf7;
+    color: white;
 }
 
 /* Listas */
@@ -141,6 +147,44 @@ ul {
     font-weight: bold;
     text-align: center;
 }
+/* Estilo de los elementos de la lista */
+.nombre-item {
+    list-style: none;
+    width: 100%;
+    margin: 5px 0;
+}
+
+/* Contenedor flex para cada elemento */
+.amigo-item {
+    display: flex;
+    justify-content: space-between; /* Separa el nombre y el botón */
+    align-items: center;
+    background-color: none;
+    padding: 10px 15px;
+}
+
+/* Estilo del nombre */
+.amigo-nombre {
+    font-size: 18px;
+    color: #333;
+    flex-grow: 1; /* Hace que el nombre ocupe el espacio restante */
+}
+
+/* Botón de eliminar */
+.btn-eliminar {
+    background-color: #ff9e9e;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-eliminar:hover {
+    background-color: #ffffff;
+}
 
 /* Botón de sortear título */
 .button-draw {
@@ -151,6 +195,7 @@ ul {
     color: var(--color-white);
     background-color: var(--color-button);
     font-size: 16px;
+    margin-top: 20px; /* Separa el botón del input */
 }
 
 .button-draw img {
@@ -161,18 +206,23 @@ ul {
     background-color: var(--color-button-hover);
 }
 
+
 /*Pop Up*/
 .popup {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    display: flex;
+    display: none; /* Oculto por defecto */
     justify-content: center;
     align-items: center;
+}
+
+/* Cuando el popup tiene la clase 'active', se muestra */
+.popup.active {
+    display: flex;
 }
 
 .popup-content {
@@ -181,6 +231,7 @@ ul {
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    font-family: "Roboto", sans-serif;
 }
 
 .popup-content button {
@@ -191,4 +242,10 @@ ul {
     color: white;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.popup-content button:hover {
+    background: rgb(166, 203, 252);
+    color: #007BFF;
+
 }
